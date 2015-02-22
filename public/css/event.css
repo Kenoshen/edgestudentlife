@@ -1,0 +1,79 @@
+#eventpage
+{
+	padding: 30px;
+}
+
+#eventpage h1
+{
+	font-size: 40px;
+	text-align: center;
+}
+
+#eventpage b
+{
+	color:#3385FF;
+	font-size: 30px;
+}
+
+#eventpage dd
+{
+	font-size: 22px;
+}
+
+#eventpage #map
+{
+	float: right;
+}
+
+#eventpage #map iframe
+{
+	width: 300px;
+	height: 300px;
+	float: right;
+}
+#eventpage #map p
+{
+	padding-top: 30px;
+	width: 400px;
+	clear: both;
+	text-align: right;
+}
+
+#eventpage form label
+{
+	font-size: 25px;
+	color:#3385FF;
+	display: block;
+	width: 100px;
+}
+#eventpage form input
+{
+	font-size: 22px;
+	width: 100%;
+	height: 50px;
+	border-radius: 10px;
+	width: 250px;
+}
+
+#eventpage form textarea
+{
+	font-size: 22px;
+	width: 100%;
+	resize: none;
+	min-height: 300px;
+	display: block;
+	border-radius: 10px;
+}
+
+#eventpage form button
+{
+	font-size: 25px;
+	background-color: #3385FF;
+	border: 0;
+	border-radius: 10px;
+	color: white;
+	width: 150px;
+	height: 40px;
+	float: right;
+	cursor: pointer;
+}

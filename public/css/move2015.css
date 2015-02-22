@@ -1,0 +1,123 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+h1, h3{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+*{
+	font-size: 30px;
+	color: #646464;
+}
+h1{
+	font-size: 70px;
+}
+.big{
+	font-size: 80px;
+}
+h3{
+	font-size: 40px;
+}
+
+.btn{
+	font-size: 30px;
+}
+
+.fixed{
+	position: fixed;
+}
+
+.center{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	vertical-align: middle;
+}
+
+.behind{
+	z-index: -100;
+}
+
+.far-behind{
+	z-index: -200;
+}
+
+.infront{
+	z-index: 100;
+}
+
+.full{
+	width: 100%;
+	height: 100%;
+}
+
+.half{
+	width: 50%;
+	height: 50%;
+}
+
+.full-w{
+	width: 100%;
+}
+
+.full-h{
+	height: 100%;
+}
+
+.half-w{
+	width: 50%;
+}
+
+.half-h{
+	height: 50%;
+}
+
+.hide-overflow{
+	overflow: hidden;
+}
+
+.back{
+	background-color: white;
+}
+
+.content{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.blue{
+	background-color: #33CCFF;
+}
+
+.green{
+	background-color: #66FF99;
+}
+
+.red{
+	background-color: #FF7777;
+}
+
+.space-lg{
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+
+.space-md{
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+.space-sm{
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.pos{
+	position: relative;
+}
+

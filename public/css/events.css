@@ -1,0 +1,25 @@
+#events
+{
+	padding: 10px;
+}
+
+#events dt
+{
+	font-size: 40px;
+	color:#3385FF;
+}
+
+#events .noevents
+{
+	font-size: 22px;
+}
+
+#events h1
+{
+	margin-bottom: 0;
+}
+
+#events p
+{
+	margin-top: 0;
+}

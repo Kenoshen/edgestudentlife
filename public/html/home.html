@@ -1,0 +1,62 @@
+<div ng-controller="HomeCtrl">
+	<h1>Welcome</h1>
+	<p>
+		Welcome to the EDGE Student Life website!  During the week our activities include lunches at area wide highschools along with a Thursday club night.  Below you can find out where EDGE is throughout the week.
+	</p>
+	<div>
+		<div id="info">
+			<h3>Connect with EDGE</h3>
+			<ul>
+				<li>
+					Tuesday Lunches - <a href="http://www.hrhsfalcons.com/" target="_blank">Highlands Ranch High School</a>
+				</li>
+				<li>
+					Wednesday Lunches - <a href="http://www.mountainvistaonline.org/" target="_blank">Mountain Vista High School</a>
+				</li>
+				<li>
+					Thursday Lunches - <a href="https://sites.google.com/a/dcsdk12.org/trhs-home/" target="_blank">Thunder Ridge High School</a>
+				</li>
+				<li>
+					Thursday Club Night - 6:30-8:00pm *Check <a href="" ng-href="#/calendar">calendar</a> for location
+				</li>
+			</ul>
+		</div>
+		<div id="imagescroller" mw-slideshow mw-slides="slides" mw-timeout="5000">
+		</div>
+	</div>
+	<h1 id="newsfeed-title">NEWSFEED</h1>
+	<hr class="blueline">
+	<table id="newsFeedTable">
+		<tr ng-repeat="feed in newsfeed">
+			<!-- Google Event -->
+			<td class="event" ng-if="feed.type === 'event'">
+				<i class="timestamp">Updated on {{format(feed.date, null, 'MMM d')}}</i>
+				<div class="feeddata">
+					<h1><a ng-href="#/events/{{feed.data.id}}" title="{{feed.data.title}}">{{feed.data.title}}<i class="startAt"> on {{format(feed.data.start, feed.type, 'MMMM d @ h:mmaa')}}</i></a></h1>
+					<p>{{feed.data.description}}</p>
+				</div>
+			</td>
+			<!-- Facebook Post -->
+			<td class="post" ng-if="feed.type === 'post'">
+				<i class="timestamp">Updated on {{format(feed.date, null, 'MMM d')}}</i>
+				<img class="logo" src="img/FB-f-Logo__gray_100.png"/>
+				<h3 class="feeddata">
+					<div ng-if="feed.data.type === 'link' && feed.data.story">Edge added a new <a href="{{feed.data.link}}" target="_blank">event</a></div>
+					<div ng-if="feed.data.type === 'link' && ! feed.data.story">{{feed.data.message}}</div>
+
+					<div ng-if="feed.data.type === 'status' && feed.data.message">{{feed.data.message}}</div>
+					<div ng-if="feed.data.type === 'status' && ! feed.data.message">{{feed.data.story}}</div>
+
+					<div ng-if="feed.data.type === 'photo' && feed.data.name">Edge added new photos: <a href="{{feed.data.link}}" target="_blank">{{feed.data.name}}</a></div>
+					<div ng-if="feed.data.type === 'photo' && ! feed.data.name">Edge added <a href="{{feed.data.link}}" target="_blank">new photos</a></div>
+				</h3>
+			</td>
+			<!-- Twitter Tweet -->
+			<td class="tweet" ng-if="feed.type === 'tweet'">
+				<i class="timestamp">Tweeted on {{format(feed.date, null, "MMM d")}}</i>
+				<img class="logo" src="img/Twitter_logo_gray.png"/>
+				<h3 class="feeddata" mw-htmlify>{{feed.data.text}}</h3>
+			</td>
+		</tr>
+	</table>
+</div>

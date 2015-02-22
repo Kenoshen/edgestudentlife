@@ -1,0 +1,13 @@
+#aboutus .portrait-a
+{
+	width: 30%;
+	float: left;
+	padding: 10px;
+}
+
+#aboutus .portrait-b
+{
+	width: 30%;
+	float: right;
+	padding: 10px;
+}

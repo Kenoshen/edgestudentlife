@@ -1,0 +1,43 @@
+<div ng-controller="ContactCtrl">
+	<dl id="contact">
+		<dt>Phone:</dt>
+		<dd>Chris Phelps - <a href="tel://303-522-0423" target="_blank">303-522-0423</a></dd>
+		<dt>Email:</dt>
+		<form id="contactusform" name="contactus" ng-submit="sendEmail(contactus.$valid)" novalidate>
+			<table>
+				<tr>
+					<td>
+						<label name="name">Name</label>
+						<input id="contactus-name" class="forminput" name="name" type="text" placeholder="Your Name" required ng-model="message.name" tabindex=1 >
+						<p ng-show="contactus.name.$invalid && (!contactus.name.$pristine || submitted)" class="help-block">Your name is required.</p>
+					</td>
+					<td rowspan='3'>
+						<label name="content">Your Message</label>
+						<textarea id="contactus-content" class="forminput" name="content" placeholder="Type your message here" required ng-model="message.body" tabindex=4 ></textarea>
+						<p ng-show="contactus.content.$invalid && (!contactus.content.$pristine || submitted)" class="help-block">A message is required.</p>
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<label name="address">Email</label>
+						<input id="contactus-address" class="forminput" name="address" type="text" placeholder="Your Email Address" required ng-model="message.email" tabindex=2 ng-pattern="/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/">
+						<p ng-show="contactus.address.$invalid && (!contactus.address.$pristine || submitted)" class="help-block">Enter a valid email address.</p>
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<label name="phone">Phone</label>
+						<input id="contactus-phone" class="forminput" name="phone" type="text" placeholder="Your Phone Number" required ng-model="message.phone" tabindex=3 ng-pattern="/^\d{10}$/">
+						<p ng-show="contactus.phone.$invalid && (!contactus.phone.$pristine || submitted)" class="help-block">Enter a valid phone number.</p>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button id="contactus-submit" class="formsubmit" type="submit" tabindex=5 >Send Email</button>
+					<td>
+				</tr>
+			</table>
+		</form>
+	</dl>
+</div>

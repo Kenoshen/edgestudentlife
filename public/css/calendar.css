@@ -1,0 +1,184 @@
+#cal
+{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+#cal table
+{
+	table-layout:fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#cal #monthName
+{
+	text-align: center;
+	color: #3385FF;
+	font-size: 35px;
+	border-bottom: 3px solid #3385FF;
+}
+
+#cal th
+{
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+	font-size: 25px;
+}
+
+#cal th button
+{
+	font-size: 25px;
+	background-color: #3385FF;
+	border: 0;
+	border-radius: 10px;
+	color: white;
+	width: 100px;
+	height: 40px;
+	cursor: pointer;
+}
+
+#cal th button:hover
+{
+	background-color: #4495FF;
+}
+
+#cal td
+{
+	font-size: 14px;
+	height: 100px;
+}
+
+#cal td:not(.blank)
+{
+	border: 2px solid black;
+	border-collapse: collapse;
+	background-color: #333;
+}
+
+#cal td:not(.blank):hover
+{
+	background-color: #444;
+}
+
+#cal td.today
+{
+	border-color: #3385FF;
+}
+
+#cal td.today .digit
+{
+	color: #3385FF;
+}
+
+#cal .digit
+{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 20%;
+	font-size: inherit;
+}
+
+#cal .elem
+{
+	width: 100%;
+	font-size: inherit;
+	line-height: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#cal .elem a
+{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+
+
+.EDGECal
+{
+	table-layout:fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.EDGECal td
+{
+	font-size: 14px;
+	height: 100px;
+}
+
+.EDGECal th
+{
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.EDGECal .MonthHead a
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.EDGECal td .Digit
+{
+	width: 100%;
+	height: 10%;
+	font-size: inherit;
+}
+
+.EDGECal td .Elem
+{
+	width: 100%;
+	height: 85%;
+	margin-top: 5px;
+	font-size: inherit;
+	line-height: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+
+.EDGECal td .Elem a
+{
+	font-size: inherit;
+	color: #33CCFF;
+	text-decoration: underline;
+}
+
+.EDGECal td .Elem a:hover
+{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.EDGECal .BlankTrue
+{
+	visibility: hidden;
+}
+
+.EDGECal th, .EDGECal .BlankFalse
+{
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+
+savingthisforlater
+{
+	box-shadow: 2px 2px 2px #000000;
+}
+
+.EDGECal .ColTodayTrue
+{
+	border-color: #3385FF;
+}
