@@ -30,6 +30,12 @@ app.config(function($routeProvider, $sceDelegateProvider) {
     templateUrl : 'html/store.html'
   }).when('/home', {
     templateUrl : 'html/home.html'
+  }).when('/event/receipt/good', {
+    templateUrl : 'html/receipt-good.html'
+  }).when('/event/receipt/decline', {
+    templateUrl : 'html/receipt-decline.html'
+  }).when('/event/receipt/error', {
+    templateUrl : 'html/receipt-error.html'
   }).otherwise({
     templateUrl : 'html/home.html'
   });
