@@ -1,0 +1,54 @@
+<div ng-controller="EventCtrl" id="eventpage">
+	<h1 id="title" style="margin-top: 0px">{{event.title}}</h1>
+	<div id="map" ng-show="event.where">
+		<iframe src="{{eventMapSource}}"></iframe>
+		<p id="moreinfo"><b>Want more information about this event?<br /><a ng-href="#/contact">Contact Us!</a></b></p>
+	</div>
+	<p id="when" ng-show="event.start"><b>When: </b>{{format(event.start, 'MMMM d, h:mmaa', "MMMM d")}} to {{format(event.end, 'h:mmaa', 'MMMM d')}}</p>
+	<p id="where" ng-show="event.where"><b>Where: </b>{{event.where}}</p>
+	<p id="price" ng-show="event.price"><b>Cost: </b>${{event.price}}</p>
+	<dl id="releaseforms" ng-show="event.releaseforms">
+		<dt><b>Release Form</b><b ng-show="event.releaseforms.length > 1">s</b><b>:</b></dt>
+		<dd ng-repeat="releaseform in event.releaseforms" ng-if="event.releaseforms"><a href="/edge/src/releaseforms/{{releaseform}}" target="_blank">{{releaseform}}</a></dd>
+	</dl>
+	<p id="description" mw-htmlify>{{event.description}}</p>
+	<dl id="attendees" ng-show="atLeastOneAttendee()">
+		<dt><b>Signed Up:</b></dt>
+		<dd ng-repeat="attendee in event.attendees" ng-if="attendee.displayName && attendee.responseStatus === 'accepted'">{{attendee.displayName}}</dd>
+	</dl>
+	<form ng-show="! event.nosignup">
+		<p><b>Let us know you are comming:</b></p>
+		<table>
+			<tr>
+				<td>
+					<label name="name">Name:</label>
+				</td>
+				<td>
+					<input ng-model="signup.name" type="text" placeholder="first and last name" name="name"  tabindex=1 />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label name="email">Email:</label>
+				</td>
+				<td>
+					<input ng-model="signup.email" type="text" placeholder="email" name="email" tabindex=2 />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label name="phone">Phone:</label>
+				</td>
+				<td>
+					<input ng-model="signup.phone" type="text" placeholder="phone" name="phone" tabindex=3 />
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<button ng-click="signUpForEvent()" tabindex=4 >Sign Up</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

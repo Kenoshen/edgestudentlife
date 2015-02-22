@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link href="move/css/2" rel="stylesheet" type="text/css" />
+	<link href="move/css/1" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script language="javascript">
+		function failure(){
+			alert("Oops...\nSomething went wrong.\nPlease contact Chris Phelps at 303-522-0423 and let him know.\nThank you!!!");			
+		}
+
+		$(document).ready(function(){
+			$("#registration").submit(function(e){
+				e.preventDefault();
+			});
+
+			$("#registerAndPayFull").click(function(){
+				console.log("Full");
+				sendEmail(function(){
+					alert("Registration Successful!\nRedirecting to Allegro Solutions Payment Site");
+					window.location.href="http://www.allegrosolutions.org/donate/EdgeStudentLife.CCP.html?regcode=CIY_REG_061215&amt=640.00";
+				}, failure);
+			});
+			$("#registerAndPayRegistration").click(function(){
+				console.log("Regis");
+				sendEmail(function(){
+					alert("Registration Successful!\nRedirecting to Allegro Solutions Payment Site");
+					window.location.href="http://www.allegrosolutions.org/donate/EdgeStudentLife.CCP.html?regcode=CIY_REG_061215&amt=100.00";
+				}, failure);
+			});
+			$("#payBalance").click(function(){
+				console.log("Balance");
+				alert("Redirecting to Allegro Solutions Payment Site");
+				window.location.href="http://www.allegrosolutions.org/donate/EdgeStudentLife.CCP.html?regcode=CIY_REG_061215&amt=540.00";
+			});
+		});
+
+		function sendEmail(success, failure){
+			name = $("#name").val();
+			gender = $("#gender option:selected").text();
+			grade = $("#grade option:selected").text();
+			phone = $("#phone").val();
+			email = $("#email").val();
+			pName = $("#pName").val();
+			pEmail = $("#pEmail").val();
+			roommate = $("#roommate").val();
+
+			var message = {subject: "MOVE 2015 Registration", name: name, email: email, phone: phone, body: []};
+			message.body.push("<tr><td>Name: </td><td>" + name);
+			message.body.push("<tr><td>Gender: </td><td>" + gender);
+			message.body.push("<tr><td>Grade: </td><td>" + grade);
+			message.body.push("<tr><td>Phone: </td><td>" + phone);
+			message.body.push("<tr><td>Email: </td><td>" + email);
+			message.body.push("<tr><td>Parent's Name: </td><td>" + pName);
+			message.body.push("<tr><td>Parent's Email: </td><td>" + pEmail);
+			message.body.push("<tr><td>Roomate Preference: </td><td>" + roommate);
+			message.body.push("");
+			message.body = message.body.join("</td></tr>").trim();
+			message.body = "<table>" + message.body + "</table>";
+
+			console.log("Send email {}", JSON.stringify(message, undefined, 4));
+
+			$.ajax({
+				type: "POST",
+				url: "http://www.edgestudentlife.com/google/email",
+				data: message,
+				success: success,
+				error: failure
+			});
+		}
+	</script>
+</head>
+<body>
+	<div class="fixed full behind space-lg">
+		<img class="center half-w" src="move/img/move"/>
+	</div>
+	<div class="full-w hide-overflow" style="height: 400px;">
+		<img class="full-w" src="move/img/sunset" style="margin: -20% 0;"/>
+	</div>
+	<div class="far-behind space-lg">
+		<h1 class="text-center infront">MOVE Summer Trip Registration</h1>
+	</div>
+	<div class="back content space-md green">
+		MOVE is an exciting 5 day conference held at the Biola University Campus in La Mirada, CA.  
+		During the week of MOVE you will live on campus, hang out at the beach everyday, and have 
+		the opportunity to create some incredible friendships!  Come hang out with EDGE this summer 
+		for the best week of your life at MOVE Summer Conference!
+	</div>
+	<div class="full-w hide-overflow">
+		<img class="full-w" src="move/img/jump" />
+	</div>
+	<div class="far-behind space-lg">
+		<h1 class="text-center infront">Conference Details:</h1>
+	</div>
+	<div class="back content space-md red">
+		<label>Open to all incoming freshmen through graduating seniors (Fall 2015)</label><br><br>
+		<div><label class="">Dates:</label> June 28th - July 3rd 2015</div>
+		<div><label class="">Location:</label> Biola University Campus in La Mirada, CA</div>
+		<div><label class="">Cost:</label> $640 ( Includes Conference Cost, Airfare, Ground Transportation, Meals )</div>
+		<ul>
+			<li>
+				At the time of registration you will need to pay a non-refundable $100 deposit agreeing that the full amount will be paid no later than 5/1/2015.
+			</li>
+			<li>
+				You will receive a final letter including packing list and emergency contact phone numbers by 6/15/2015.
+			</li>
+		</ul>
+	</div>
+	<div class="full-w hide-overflow green">
+		<h3 class="text-center pos">The best way to attend a MOVE Summer Conference is with</h3>
+		<h1 class="text-center pos big">FRIENDS</h1>
+		<h1 class="text-center pos">Invite someone!</h1>
+		<img class="full-w pos" src="move/img/group" />
+	</div>
+	<form class="text-center" id="registration" onsubmit="">
+		<h3 class="space-md">Registration Form</h3>
+		<div class="blue space-md">
+			<div class="container space-sm">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<label class="">Name: </label><br><input class="input-lg" id="name" type="text"/><br>
+						<label class="">Gender: </label><br>
+						<select class="input-lg" id="gender">
+							<option value="Female" selected="selected">Female</option>
+							<option value="Male">Male</option>
+						</select><br>
+						<label class="">Grade: </label><br>
+						<select class="input-lg" id="grade">
+							<option value="9" selected="selected">Freshman</option>
+							<option value="10">Sophomore</option>
+							<option value="11">Junior</option>
+							<option value="12">Senior</option>
+							<option value="13">College Freshman</option>
+						</select><br>
+						<label class="">Phone Number: </label><br><input class="input-lg" id="phone" type="phonenumber" placeholder="3035554444"/><br>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<label class="">Email: </label><br><input class="input-lg" id="email" type="email" placeholder="example@gmail.com"/><br>
+						<label class="">Parent's Name: </label><br><input class="input-lg" id="pName" type="text"/><br>
+						<label class="">Parent's Email: </label><br><input class="input-lg" id="pEmail" type="email" placeholder="example@gmail.com"/><br>
+						<label class="">Roommate Preference: </label><br><textarea class="input-lg" id="roommate" placeholder="Who would you like to room with?"></textarea><br>
+					</div>
+				</div>
+			</div>
+			<div class="">
+				<input class="btn green" id="registerAndPayRegistration" type="button" value="Register and Pay Registration Fee ($100)" /><br><br>
+				<input class="btn green" id="registerAndPayFull" type="button" value="Register and Pay in Full ($640)" /><br><br>
+				Already Registered?<br>
+				Click the red button to pay the remainder of your balance:<br>
+				<input class="btn red" id="payBalance" type="button" value="Pay Remaining Balance ($540)" /><br><br>
+				* Payments are handled by EDGE Student Life's financial manager: Allegro Solutions
+			</div>
+		</div>
+	</form>
+	<div class="full-w hide-overflow">
+		<img class="full-w" src="move/img/beach" />
+	</div>
+</body>
+</html>

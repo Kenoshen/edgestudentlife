@@ -1,0 +1,15 @@
+<div ng-controller="EventsCtrl">
+	<dl id="events">
+		<div ng-repeat="month in upcommingMonths">
+			<dt>{{month.name}}</dt>
+			<dd ng-repeat="event in month.events">
+				<i>{{event.updated.pretty}}</i>
+				<h1>
+					<a ng-href="#/events/{{event.id}}" >{{event.title}}<i> on {{format(event.start, "event", "MMMM d @ h:mmaa")}}</i></a>
+				</h1>
+				<p>{{event.description}}</p>
+			</dd>
+			<dd class="noevents" ng-if="(month.events.length === 0)">There are no events for this month</dd>
+		</div>
+	</dl>
+</div>
