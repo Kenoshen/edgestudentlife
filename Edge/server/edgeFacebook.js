@@ -39,25 +39,27 @@ module.exports = function (){
 					callback(data);
 				}
 				imgs = [];
-				for (var i = 0; i < data.data.length; i++){
-					var img = {};
-					var image = data.data[i];
-					img.id = image.id;
-					img.name = image.name;
-					if (image.images){
-						for (var k = 0; k < image.images.length; k++){
-							var photo = image.images[k];
-							if (photo.height >= imageHeight.min && photo.height <= imageHeight.max){
-								img.img = photo.source;
-								break;
+				try {
+					for (var i = 0; i < data.data.length; i++){
+						var img = {};
+						var image = data.data[i];
+						img.id = image.id;
+						img.name = image.name;
+						if (image.images){
+							for (var k = 0; k < image.images.length; k++){
+								var photo = image.images[k];
+								if (photo.height >= imageHeight.min && photo.height <= imageHeight.max){
+									img.img = photo.source;
+									break;
+								}
+							}
+							if (! img.img && image.images.length > 0){
+								img.img = image.images[0].source;
 							}
 						}
-						if (! img.img && image.images.length > 0){
-							img.img = image.images[0].source;
-						}
+						imgs.push(img);
 					}
-					imgs.push(img);
-				}
+				} catch (e){}
 				callback(imgs);
 			});
 		}
